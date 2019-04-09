@@ -3,23 +3,26 @@ window.addEventListener("load",Init);
 
 function Init()
 {
-    console.log("init");
-    var url_sport = "https://newsapi.org/v2/top-headlines?country=ua&category=sports&apiKey=9a74d04fa22a42b6bfe20a4df5895f97";
-    Request(url_sport,SportNews);
-    var url_Enterteiment = "https://newsapi.org/v2/top-headlines?country=ua&category=entertainment&apiKey=9a74d04fa22a42b6bfe20a4df5895f97";
-    Request(url_Enterteiment, EnterteimentNews);
-    var url_Helth = "https://newsapi.org/v2/top-headlines?country=ua&category=health&apiKey=9a74d04fa22a42b6bfe20a4df5895f97";
-    Request(url_Helth, HelthNews);
-    var url_Technology = "https://newsapi.org/v2/top-headlines?country=ua&category=technology&apiKey=9a74d04fa22a42b6bfe20a4df5895f97";
-    Request(url_Technology, TechnologyNews);
-    var url_Science = "https://newsapi.org/v2/top-headlines?country=ua&category=technology&apiKey=9a74d04fa22a42b6bfe20a4df5895f97";
-    Request(url_Science, ScienceNews);
+
+    var api_key = "9a74d04fa22a42b6bfe20a4df5895f97";
+    var categorie=[ 
+        {name: sport, fillfunction: SportNews },
+        { name: enterteiment, fillfunction: EnterteimentNews },
+        { name: нelth, fillfunction: HelthNews },
+        { name: technology, fillfunction: TechnologyNews },
+        { name: Science, fillfunction: ScienceNews },
+        ]
+    for (let i = 0; i < categorie.length; i++) {
+        Request(categorie[i], api_key)
+    
+    }
 
 }
 
-function Request(url,calback)
+function Request(categorie,api_key)
 {
     var xhr= new XMLHttpRequest();
+    var url = "https://newsapi.org/v2/top-headlines?country=ua&category="+categorie.name+"&"+"apiKey="+"9a74d04fa22a42b6bfe20a4df5895f97";
     xhr.open("GET",url,true);
     xhr.send();
 
@@ -35,13 +38,13 @@ function Request(url,calback)
         else
         {
             var data = JSON.parse(xhr.responseText);
-            calback(data);
+            categorie.fillfunction;
         }
     }
 }
-function SportNews(data)
+function SportNews()
 {
-    console.log(data);
+    console.log(this=>name);
 }
 function EnterteimentNews(data) {
     console.log(data);
