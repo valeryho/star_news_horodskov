@@ -5,24 +5,27 @@ function Init()
 {
 
     var api_key = "9a74d04fa22a42b6bfe20a4df5895f97";
-    var categorie=[ 
-        {name: sport, fillfunction: SportNews },
-        { name: enterteiment, fillfunction: EnterteimentNews },
-        { name: нelth, fillfunction: HelthNews },
-        { name: technology, fillfunction: TechnologyNews },
-        { name: Science, fillfunction: ScienceNews },
+    var country = "us" ;
+    var categorie=[];
+    categorie=[ 
+        {name: "sport", fillfunction: SportNews },
+        { name: "enterteiment", fillfunction: EnterteimentNews },
+        { name: "нelth", fillfunction: HelthNews },
+        { name: "technology", fillfunction: TechnologyNews },
+        { name: "science", fillfunction: ScienceNews },
         ]
     for (let i = 0; i < categorie.length; i++) {
-        Request(categorie[i], api_key)
+        Request(categorie[i], api_key, country)
     
     }
 
+
 }
 
-function Request(categorie,api_key)
+function Request(categorie,api_key,country)
 {
     var xhr= new XMLHttpRequest();
-    var url = "https://newsapi.org/v2/top-headlines?country=ua&category="+categorie.name+"&"+"apiKey="+"9a74d04fa22a42b6bfe20a4df5895f97";
+    var url = "https://newsapi.org/v2/top-headlines?country="+country+"&category="+categorie.name+"&"+"apiKey="+"9a74d04fa22a42b6bfe20a4df5895f97";
     xhr.open("GET",url,true);
     xhr.send();
 
@@ -38,13 +41,13 @@ function Request(categorie,api_key)
         else
         {
             var data = JSON.parse(xhr.responseText);
-            categorie.fillfunction;
+            categorie.fillfunction(data);
         }
     }
 }
-function SportNews()
+function SportNews(data)
 {
-    console.log(this=>name);
+    console.log(data);
 }
 function EnterteimentNews(data) {
     console.log(data);
