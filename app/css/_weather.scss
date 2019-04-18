@@ -5,7 +5,7 @@
     
     .weather_elements
     {
-        background: $bg_color12_checkbox_checked;
+        background: $bg_color1;
         display: flex;
         flex-wrap: wrap;
         color: $white;
@@ -20,11 +20,22 @@
             width: 50%
         }
         .t_diap{
+            width: 50%;
             .upper_t
-            {width: 100%}
+            {width: 100%;
+                color: red;
+            }
             .lower_t
             {width: 100%}
         }
+
+        .weather_elements_det
+        {
+            display: none;
+
+        }
+
+
         &:hover
         {
              background: $bg_color_body_index;
