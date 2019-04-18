@@ -15,7 +15,7 @@ function Init() {
         { name: "technology", fillfunction: TechnologyNews },
         { name: "science", fillfunction: ScienceNews },
     ]
-    for (let i = 0; i < categorie.length; i++) {
+    for (var i = 0; i < categorie.length; i++) {
         Request(categorie[i], api_key, country);
         
 
